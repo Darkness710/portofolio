@@ -53,12 +53,12 @@ onUnmounted(() => {
 <template>
     <header :class="[
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        'lg:inset-x-0 lg:top-4 lg:mx-auto lg:w-fit lg:rounded-full lg:border lg:border-ivory/10 lg:bg-ink/40 lg:backdrop-blur-lg lg:px-2',
+        'lg:inset-x-6 lg:top-4 lg:rounded-full lg:border lg:border-ivory/10 lg:bg-ink/40 lg:backdrop-blur-lg lg:px-2',
         scrolled
             ? 'border-b border-ivory/10 bg-ink/90 backdrop-blur-md'
             : 'bg-transparent',
     ]">
-        <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:w-auto lg:max-w-none lg:justify-center lg:gap-12">
+        <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:w-auto lg:max-w-none lg:justify-between">
             <a href="#home" class="font-display text-lg tracking-tight text-ivory" @click="closeMenu">
                 Shiddiq Saiful Majid<span class="text-gold">.</span>
             </a>
