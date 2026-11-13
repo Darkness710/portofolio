@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 
 ARG NODE_VERSION=24
 
@@ -7,7 +8,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+RUN --mount=type=cache,target=/root/.npm \
+    if [ -f package-lock.json ]; then npm ci; else npm install; fi
 
 COPY . .
 
