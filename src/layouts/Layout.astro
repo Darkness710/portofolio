@@ -1,7 +1,7 @@
 ---
-import Navbar from '../components/navbar.vue';
+import Navbar from '../components/navbar.vue'
 import "../styles/global.css";
-
+import Hero from '../components/hero.astro'
 ---
 
 <!doctype html>
@@ -15,6 +15,7 @@ import "../styles/global.css";
 	</head>
 	<body style="background-color: brown;">
 		<Navbar client:load />
+		<Hero />
 		<slot />
 	</body>
 </html>
