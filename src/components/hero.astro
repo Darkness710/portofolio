@@ -1,48 +1,117 @@
 ---
-
+// ⚠️ NAMA PROPS di sini HARUS SAMA dengan atribut yang dikirim di index.astro
+const {
+  name = "SHIDDIQ sAIFULMAJID",
+  jobTitle = "WEB & BACKEND DEVELOPER",
+  headline = "Full-Stack Developer focused on Backend, based in Indonesia",
+  quote = "“I build web applications and REST APIs with Laravel, Node.js, and Express, then deploy them so they’re live and accessible online. I also design interfaces that are easy to use.”",
+  image = "/images/pria.jpg",
+  link = "#about",
+} = Astro.props;
 ---
 
-<section id="home" class="flex min-h-screen items-center px-6">
+<section
+  id="home"
+  class="hero relative min-h-screen w-full overflow-hidden bg-ink text-ivory"
+>
+  <img
+    src={image}
+    alt="Foto profil"
+    class="hero-photo absolute left-0 top-0 h-full w-[55%] object-cover object-top opacity-80"
+  />
   <div
-    class="mx-auto grid max-w-5xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]"
+    class="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-transparent to-ink"
   >
-    <!-- Kolom teks -->
-    <div>
-      <p class="mb-4 flex items-center gap-2 text-sm text-gold">
-        <span class="h-px w-8 bg-gold"></span>
-        Halo, saya
-      </p>
+  </div>
+  <!-- Konten kanan -->
+  <div
+    class="hero-content absolute left-[45%] top-[14%] z-10 max-w-[420px] pr-6"
+  >
+    <h2 class="font-display text-[1.9rem] font-bold leading-snug text-ivory/90">
+      {headline}
+    </h2>
 
-      <h1
-        class="font-display text-4xl leading-tight text-ivory sm:text-5xl lg:text-6xl"
+    <p class="mt-5 text-[0.85rem] leading-[1.9] text-ivory/60">
+      {quote}
+    </p>
+
+    <a
+      href={link}
+      class="mt-6 inline-flex items-center gap-2 text-[0.8rem] uppercase tracking-wide text-gold transition-all hover:gap-4"
+    >
+      Read more
+      <svg
+        width="22"
+        height="12"
+        viewBox="0 0 22 12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.3"
       >
-        Shiddiq Saiful Majid.
-      </h1>
-
-      <p class="mt-4 font-display text-xl text-ivory/70 sm:text-2xl">
-        Software Developer yang fokus bikin
-        <span class="text-gold">antarmuka web yang rapi & cepat</span>.
-      </p>
-
-      <p class="mt-6 max-w-md text-ivory/60">
-        Terbiasa kerja dengan Vue.js, Astro, dan Tailwind CSS untuk membangun
-        produk yang bersih secara desain maupun kode.
-      </p>
-    </div>
+        <path d="M0 6h20M15 1l5 5-5 5"></path>
+      </svg>
+    </a>
   </div>
 
-  <!-- Kolom foto -->
-  <div class="relative mx-auto w-full max-w-xs lg:max-w-sm">
-    <div
-      class="absolute -bottom-4 -right-4 h-full w-full rounded-2xl border border-dashed border-gold/60"
+  <!-- Nama besar outline di bawah -->
+  <div class="pointer-events-none absolute bottom-10 left-[32%] right-0 z-0">
+    <h1
+      class="outline-text whitespace-nowrap font-display text-[clamp(2rem,5vw,5rem)] font-extrabold leading-[0.9]"
     >
-    </div>
-    <div class="relative overflow-hidden rounded-2xl">
-      <img
-        src="/images/profile.jpg"
-        alt="Shiddiq Saiful Majid"
-        class="aspect-[4/5] w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
-      />
-    </div>
+      {name}
+    </h1>
+    <p class="mt-3 text-sm tracking-[0.15em] text-ivory/60">
+      {jobTitle}
+    </p>
   </div>
 </section>
+
+<style>
+  /* Foto memudar ke kanan & bawah */
+  .hero-photo {
+    -webkit-mask-image:
+      linear-gradient(to right, #000 40%, transparent 100%),
+      linear-gradient(to bottom, #000 60%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, #000 40%, transparent 100%),
+      linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  /* Teks hanya garis tepi */
+  .outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.04em;
+  }
+
+  /* Animasi masuk */
+  .hero-content {
+    animation: fadeUp 0.9s ease both;
+  }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-photo {
+      width: 100%;
+      opacity: 0.45;
+    }
+    .hero-content {
+      left: 8%;
+      right: 8%;
+      top: 32%;
+      max-width: none;
+    }
+  }
+</style>
